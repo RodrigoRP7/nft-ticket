@@ -1,0 +1,285 @@
+{
+  "contractName": "IMintCapped",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "numToken",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxSupply",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"name\":\"maxSupply\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"numToken\",\"type\":\"uint256\"}],\"name\":\"mint\",\"outputs\":[],\"stateMutability\":\"payable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for ERC-721 token minting with capped supply. Contracts implementing { IMintCapped } interface enable new token issuance within a limited range or maximum supply.\",\"kind\":\"dev\",\"methods\":{\"maxSupply()\":{\"returns\":{\"_0\":\"uint256 Max supply state variable\"}},\"mint(address,uint256)\":{\"details\":\"Throws if: - 'numTokens' is equal to zero - Current supply + 'numTokens' > Max supply Additional conditions can be added to the 'mint' functions: # 'msg.value' must be higher than mint price # 'numToken' must be lower than limit of tokens per mint # ...\",\"params\":{\"numToken\":\"Number of tokens to mint USE '_safeMint' from OpenZeppelin ERC-721 implementation This will emit a 'Transfer' event and perform all safety checks\",\"to\":\"Address of the recipient/minter\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"maxSupply()\":{\"notice\":\"view of the max supply limit\"},\"mint(address,uint256)\":{\"notice\":\"Mints a new token and assigns ownership to 'to'\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/scm-interfaces/iscm-03-01.sol\":\"IMintCapped\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/scm-interfaces/iscm-03-01.sol\":{\"keccak256\":\"0xe71ade30412c072aeb746b6b0464270ee05c9e5e366d1fe2f9c8f8c4c9e19f14\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://5d5284651445a9fe259cfe799193ac59cb89f98fe2e653e2b1dccdbc3b3e1add\",\"dweb:/ipfs/QmZEVr6AFYv8rVMhDn2XFxmNXmyDGc6B7oBTn4xubVhtiW\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Developed by: Archivist (version: v0.1)\npragma solidity ^0.8.0;\n\n/**\n * @dev Interface for ERC-721 token minting with capped supply.\n * Contracts implementing { IMintCapped } interface enable new token\n * issuance within a limited range or maximum supply.\n */\n\ninterface IMintCapped {\n\n    /**\n     * @notice Mints a new token and assigns ownership to 'to'\n     * @dev Throws if:\n     * - 'numTokens' is equal to zero\n     * - Current supply + 'numTokens' > Max supply\n     *\n     * Additional conditions can be added to the 'mint' functions:\n     * # 'msg.value' must be higher than mint price\n     * # 'numToken' must be lower than limit of tokens per mint\n     * # ...\n     *\n     * @param to Address of the recipient/minter\n     * @param numToken Number of tokens to mint\n     *\n     * USE '_safeMint' from OpenZeppelin ERC-721 implementation\n     * This will emit a 'Transfer' event and perform all safety checks\n     */\n    function mint(address to, uint256 numToken) external payable;\n\n    /**\n     * @notice view of the max supply limit\n     * @return uint256 Max supply state variable\n     */\n    function maxSupply() external view returns (uint256);\n}\n\n\n",
+  "sourcePath": "/Users/rodrigoruanoperez/Desktop/TFM/CODE_3/contracts/scm-interfaces/iscm-03-01.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/scm-interfaces/iscm-03-01.sol",
+    "exportedSymbols": {
+      "IMintCapped": [
+        638
+      ]
+    },
+    "id": 639,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 622,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "75:23:4"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IMintCapped",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 623,
+          "nodeType": "StructuredDocumentation",
+          "src": "100:194:4",
+          "text": " @dev Interface for ERC-721 token minting with capped supply.\n Contracts implementing { IMintCapped } interface enable new token\n issuance within a limited range or maximum supply."
+        },
+        "fullyImplemented": false,
+        "id": 638,
+        "linearizedBaseContracts": [
+          638
+        ],
+        "name": "IMintCapped",
+        "nameLocation": "306:11:4",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 624,
+              "nodeType": "StructuredDocumentation",
+              "src": "325:635:4",
+              "text": " @notice Mints a new token and assigns ownership to 'to'\n @dev Throws if:\n - 'numTokens' is equal to zero\n - Current supply + 'numTokens' > Max supply\n Additional conditions can be added to the 'mint' functions:\n # 'msg.value' must be higher than mint price\n # 'numToken' must be lower than limit of tokens per mint\n # ...\n @param to Address of the recipient/minter\n @param numToken Number of tokens to mint\n USE '_safeMint' from OpenZeppelin ERC-721 implementation\n This will emit a 'Transfer' event and perform all safety checks"
+            },
+            "functionSelector": "40c10f19",
+            "id": 631,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "mint",
+            "nameLocation": "974:4:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 629,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 626,
+                  "mutability": "mutable",
+                  "name": "to",
+                  "nameLocation": "987:2:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 631,
+                  "src": "979:10:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 625,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "979:7:4",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 628,
+                  "mutability": "mutable",
+                  "name": "numToken",
+                  "nameLocation": "999:8:4",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 631,
+                  "src": "991:16:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 627,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "991:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "978:30:4"
+            },
+            "returnParameters": {
+              "id": 630,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1025:0:4"
+            },
+            "scope": 638,
+            "src": "965:61:4",
+            "stateMutability": "payable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 632,
+              "nodeType": "StructuredDocumentation",
+              "src": "1032:104:4",
+              "text": " @notice view of the max supply limit\n @return uint256 Max supply state variable"
+            },
+            "functionSelector": "d5abeb01",
+            "id": 637,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "maxSupply",
+            "nameLocation": "1150:9:4",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 633,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1159:2:4"
+            },
+            "returnParameters": {
+              "id": 636,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 635,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 637,
+                  "src": "1185:7:4",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 634,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1185:7:4",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1184:9:4"
+            },
+            "scope": 638,
+            "src": "1141:53:4",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 639,
+        "src": "296:900:4",
+        "usedErrors": []
+      }
+    ],
+    "src": "75:1124:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.11",
+  "updatedAt": "2023-01-11T12:53:40.604Z",
+  "devdoc": {
+    "details": "Interface for ERC-721 token minting with capped supply. Contracts implementing { IMintCapped } interface enable new token issuance within a limited range or maximum supply.",
+    "kind": "dev",
+    "methods": {
+      "maxSupply()": {
+        "returns": {
+          "_0": "uint256 Max supply state variable"
+        }
+      },
+      "mint(address,uint256)": {
+        "details": "Throws if: - 'numTokens' is equal to zero - Current supply + 'numTokens' > Max supply Additional conditions can be added to the 'mint' functions: # 'msg.value' must be higher than mint price # 'numToken' must be lower than limit of tokens per mint # ...",
+        "params": {
+          "numToken": "Number of tokens to mint USE '_safeMint' from OpenZeppelin ERC-721 implementation This will emit a 'Transfer' event and perform all safety checks",
+          "to": "Address of the recipient/minter"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "maxSupply()": {
+        "notice": "view of the max supply limit"
+      },
+      "mint(address,uint256)": {
+        "notice": "Mints a new token and assigns ownership to 'to'"
+      }
+    },
+    "version": 1
+  }
+}

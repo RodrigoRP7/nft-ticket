@@ -1,0 +1,169 @@
+{
+  "contractName": "IDynamicMetadata",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "string",
+          "name": "newURI",
+          "type": "string"
+        }
+      ],
+      "name": "updateBaseURI",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"string\",\"name\":\"newURI\",\"type\":\"string\"}],\"name\":\"updateBaseURI\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface for dynamic ERC-721 token metadata. Contracts implementing { IDynamicMetadata } enable modifying the metadata of the NFT collection by specifying a new location (base URI). Metadata modification may be triggered by smart contract events or external calls. The implementation of this interface can restrict access to an administrator role, require some state to change or period to expire. Hence, there are multiple different ways to implement { IDynamicMetadata } --------------- RECOMMENDATION --------------- Follow the same scheme for all different metadata URIs and only modify the base URI, while preserving the path and file names of each tokenId's metadata. \",\"kind\":\"dev\",\"methods\":{\"updateBaseURI(string)\":{\"details\":\"This function does not allow individual tokenId metadata modification. For this to be done, a different implementation of the 'tokenURI' function must be done.\",\"params\":{\"newURI\":\"the new URI of the metadata\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"updateBaseURI(string)\":{\"notice\":\"Updates the base URI of the NFT collection\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/scm-interfaces/iscm-07-02.sol\":\"IDynamicMetadata\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/scm-interfaces/iscm-07-02.sol\":{\"keccak256\":\"0x4667962fd663090c7616c047a98beb9b8098c9ca04815ae2a3f7fa5d065ef903\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://007bc5f72bf0db63d8a586d39d8056dbb762f8900abe5741a862eb49e93f04f7\",\"dweb:/ipfs/QmS3mNKTh1CTzq1iZ2WDbuVXxBkbMBqYtJdtMtHypy3zey\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Developed by: Archivist (version: v0.1)\npragma solidity ^0.8.0;\n\n/**\n * @dev Interface for dynamic ERC-721 token metadata.\n * Contracts implementing { IDynamicMetadata } enable modifying the metadata\n * of the NFT collection by specifying a new location (base URI).\n *\n * Metadata modification may be triggered by smart contract events or external calls.\n * The implementation of this interface can restrict access to an administrator role,\n * require some state to change or period to expire. Hence, there are multiple different\n * ways to implement { IDynamicMetadata }\n *\n * ---------------\n * RECOMMENDATION\n * ---------------\n * Follow the same scheme for all different metadata URIs and only modify the base URI,\n * while preserving the path and file names of each tokenId's metadata. \n */\n\ninterface IDynamicMetadata {\n\n    /**\n     * @notice Updates the base URI of the NFT collection\n     * @dev This function does not allow individual tokenId metadata modification.\n     * For this to be done, a different implementation of the 'tokenURI' function\n     * must be done.\n     * @param newURI the new URI of the metadata\n     */\n    function updateBaseURI(string memory newURI) external;\n\n}",
+  "sourcePath": "/Users/rodrigoruanoperez/Desktop/TFM/CODE_3/contracts/scm-interfaces/iscm-07-02.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/scm-interfaces/iscm-07-02.sol",
+    "exportedSymbols": {
+      "IDynamicMetadata": [
+        608
+      ]
+    },
+    "id": 609,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 600,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "75:23:7"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IDynamicMetadata",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 601,
+          "nodeType": "StructuredDocumentation",
+          "src": "100:730:7",
+          "text": " @dev Interface for dynamic ERC-721 token metadata.\n Contracts implementing { IDynamicMetadata } enable modifying the metadata\n of the NFT collection by specifying a new location (base URI).\n Metadata modification may be triggered by smart contract events or external calls.\n The implementation of this interface can restrict access to an administrator role,\n require some state to change or period to expire. Hence, there are multiple different\n ways to implement { IDynamicMetadata }\n ---------------\n RECOMMENDATION\n ---------------\n Follow the same scheme for all different metadata URIs and only modify the base URI,\n while preserving the path and file names of each tokenId's metadata. "
+        },
+        "fullyImplemented": false,
+        "id": 608,
+        "linearizedBaseContracts": [
+          608
+        ],
+        "name": "IDynamicMetadata",
+        "nameLocation": "842:16:7",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 602,
+              "nodeType": "StructuredDocumentation",
+              "src": "866:304:7",
+              "text": " @notice Updates the base URI of the NFT collection\n @dev This function does not allow individual tokenId metadata modification.\n For this to be done, a different implementation of the 'tokenURI' function\n must be done.\n @param newURI the new URI of the metadata"
+            },
+            "functionSelector": "931688cb",
+            "id": 607,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "updateBaseURI",
+            "nameLocation": "1184:13:7",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 605,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 604,
+                  "mutability": "mutable",
+                  "name": "newURI",
+                  "nameLocation": "1212:6:7",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 607,
+                  "src": "1198:20:7",
+                  "stateVariable": false,
+                  "storageLocation": "memory",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_memory_ptr",
+                    "typeString": "string"
+                  },
+                  "typeName": {
+                    "id": 603,
+                    "name": "string",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1198:6:7",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_string_storage_ptr",
+                      "typeString": "string"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1197:22:7"
+            },
+            "returnParameters": {
+              "id": 606,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1228:0:7"
+            },
+            "scope": 608,
+            "src": "1175:54:7",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 609,
+        "src": "832:400:7",
+        "usedErrors": []
+      }
+    ],
+    "src": "75:1157:7"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.11",
+  "updatedAt": "2023-01-11T09:26:54.287Z",
+  "devdoc": {
+    "details": "Interface for dynamic ERC-721 token metadata. Contracts implementing { IDynamicMetadata } enable modifying the metadata of the NFT collection by specifying a new location (base URI). Metadata modification may be triggered by smart contract events or external calls. The implementation of this interface can restrict access to an administrator role, require some state to change or period to expire. Hence, there are multiple different ways to implement { IDynamicMetadata } --------------- RECOMMENDATION --------------- Follow the same scheme for all different metadata URIs and only modify the base URI, while preserving the path and file names of each tokenId's metadata. ",
+    "kind": "dev",
+    "methods": {
+      "updateBaseURI(string)": {
+        "details": "This function does not allow individual tokenId metadata modification. For this to be done, a different implementation of the 'tokenURI' function must be done.",
+        "params": {
+          "newURI": "the new URI of the metadata"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "updateBaseURI(string)": {
+        "notice": "Updates the base URI of the NFT collection"
+      }
+    },
+    "version": 1
+  }
+}

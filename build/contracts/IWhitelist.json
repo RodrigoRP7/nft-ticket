@@ -1,0 +1,458 @@
+{
+  "contractName": "IWhitelist",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "whitelisted",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "numAllowed",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "mintPrice",
+          "type": "uint256"
+        }
+      ],
+      "name": "addToWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "removed",
+          "type": "address[]"
+        }
+      ],
+      "name": "removeFromWhitelist",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "isWhitelisted",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"whitelisted\",\"type\":\"address[]\"},{\"internalType\":\"uint256\",\"name\":\"numAllowed\",\"type\":\"uint256\"},{\"internalType\":\"uint256\",\"name\":\"mintPrice\",\"type\":\"uint256\"}],\"name\":\"addToWhitelist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"account\",\"type\":\"address\"}],\"name\":\"isWhitelisted\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address[]\",\"name\":\"removed\",\"type\":\"address[]\"}],\"name\":\"removeFromWhitelist\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"details\":\"Interface to manage a whitelist of addresses Contracts implementing { IWhitelist } interface can add and remove addresses from a whitelist. Members of a whitelist can have benefits and privileges, as access to presales, discounts, etc. -------- WARNING! -------- Ensure that adding members to the whitelist is restricted from public  external calls that might facilitate DoS attacks. Administrator roles or similar are highly advised.\",\"kind\":\"dev\",\"methods\":{\"addToWhitelist(address[],uint256,uint256)\":{\"details\":\"Throws if: - Any address of 'whitelisted' is the zero address\",\"params\":{\"mintPrice\":\"The price at which the whitelisted address can mint the tokens. NOTE that 'numAllowed' and 'mintPrice' are optional parameters. A  whitelist might pursue different purposes. Use this funcion by adapting its parameters to the specific use case.\",\"numAllowed\":\"The number of tokens allowed to mint\",\"whitelisted\":\"The array of addresses added to the whitelist\"}},\"isWhitelisted(address)\":{\"params\":{\"account\":\"The queried address\"},\"returns\":{\"_0\":\"bool 'true' if 'account' is whitelisted, 'false' otherwise\"}},\"removeFromWhitelist(address[])\":{\"details\":\"Throws if: - Any address of 'removed' is not whitelisted\",\"params\":{\"removed\":\"The array of addresses to remove from the whitelist\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"addToWhitelist(address[],uint256,uint256)\":{\"notice\":\"Adds an array of 'whitelisted' addresses to the whitelist. Assigns 'numAllowed' number of tokens to mint at a 'mintPrice'\"},\"isWhitelisted(address)\":{\"notice\":\"Returns whether an 'account' is whitelisted or not\"},\"removeFromWhitelist(address[])\":{\"notice\":\"Removes an array of addresses from the whitelist\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"project:/contracts/scm-interfaces/iscm-11.sol\":\"IWhitelist\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":false,\"runs\":200},\"remappings\":[]},\"sources\":{\"project:/contracts/scm-interfaces/iscm-11.sol\":{\"keccak256\":\"0x5462fe0bcb8c577b2cdb83253b7ede88112598eb016912afb82eda20e301ef80\",\"license\":\"MIT\",\"urls\":[\"bzz-raw://7121d7166230667d283c425c4dc1b15256933b04efc3cb06c1cebce166f6e6b0\",\"dweb:/ipfs/QmSMzefLVgiXyGJ4UntxxKJcNhJ31AB73vsrrYRagMSNre\"]}},\"version\":1}",
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "immutableReferences": {},
+  "generatedSources": [],
+  "deployedGeneratedSources": [],
+  "sourceMap": "",
+  "deployedSourceMap": "",
+  "source": "// SPDX-License-Identifier: MIT\n// Developed by: Archivist (version: v0.1)\npragma solidity ^0.8.0;\n\n/**\n * @dev Interface to manage a whitelist of addresses\n * Contracts implementing { IWhitelist } interface can add and remove\n * addresses from a whitelist. Members of a whitelist can have benefits\n * and privileges, as access to presales, discounts, etc.\n *\n * --------\n * WARNING!\n * --------\n * Ensure that adding members to the whitelist is restricted from public \n * external calls that might facilitate DoS attacks. Administrator roles\n * or similar are highly advised.\n */\n\n\ninterface IWhitelist {\n\n    /**\n     * @notice Adds an array of 'whitelisted' addresses to the whitelist.\n     * Assigns 'numAllowed' number of tokens to mint at a 'mintPrice'\n     * @dev Throws if:\n     * - Any address of 'whitelisted' is the zero address\n     * @param whitelisted The array of addresses added to the whitelist\n     * @param numAllowed The number of tokens allowed to mint\n     * @param mintPrice The price at which the whitelisted address can mint\n     * the tokens.\n     *\n     * NOTE that 'numAllowed' and 'mintPrice' are optional parameters. A \n     * whitelist might pursue different purposes. Use this funcion by adapting\n     * its parameters to the specific use case.\n     */\n    function addToWhitelist(\n        address[] calldata whitelisted, \n        uint256 numAllowed,\n\t    uint256 mintPrice\n    ) external;\n\n\n    /**\n     * @notice Removes an array of addresses from the whitelist\n     * @dev Throws if:\n     * - Any address of 'removed' is not whitelisted\n     * @param removed The array of addresses to remove from the whitelist\n     */\n    function removeFromWhitelist(address[] calldata removed) external;\n\n\n    /**\n     * @notice Returns whether an 'account' is whitelisted or not\n     * @param account The queried address\n     * @return bool 'true' if 'account' is whitelisted,\n     * 'false' otherwise\n     */\n    function isWhitelisted(address account) external view returns(bool);\n\n\n}",
+  "sourcePath": "/Users/rodrigoruanoperez/Desktop/TFM/CODE_3/contracts/scm-interfaces/iscm-11.sol",
+  "ast": {
+    "absolutePath": "project:/contracts/scm-interfaces/iscm-11.sol",
+    "exportedSymbols": {
+      "IWhitelist": [
+        688
+      ]
+    },
+    "id": 689,
+    "license": "MIT",
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 660,
+        "literals": [
+          "solidity",
+          "^",
+          "0.8",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "75:23:9"
+      },
+      {
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "IWhitelist",
+        "contractDependencies": [],
+        "contractKind": "interface",
+        "documentation": {
+          "id": 661,
+          "nodeType": "StructuredDocumentation",
+          "src": "100:480:9",
+          "text": " @dev Interface to manage a whitelist of addresses\n Contracts implementing { IWhitelist } interface can add and remove\n addresses from a whitelist. Members of a whitelist can have benefits\n and privileges, as access to presales, discounts, etc.\n --------\n WARNING!\n --------\n Ensure that adding members to the whitelist is restricted from public \n external calls that might facilitate DoS attacks. Administrator roles\n or similar are highly advised."
+        },
+        "fullyImplemented": false,
+        "id": 688,
+        "linearizedBaseContracts": [
+          688
+        ],
+        "name": "IWhitelist",
+        "nameLocation": "593:10:9",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "documentation": {
+              "id": 662,
+              "nodeType": "StructuredDocumentation",
+              "src": "611:673:9",
+              "text": " @notice Adds an array of 'whitelisted' addresses to the whitelist.\n Assigns 'numAllowed' number of tokens to mint at a 'mintPrice'\n @dev Throws if:\n - Any address of 'whitelisted' is the zero address\n @param whitelisted The array of addresses added to the whitelist\n @param numAllowed The number of tokens allowed to mint\n @param mintPrice The price at which the whitelisted address can mint\n the tokens.\n NOTE that 'numAllowed' and 'mintPrice' are optional parameters. A \n whitelist might pursue different purposes. Use this funcion by adapting\n its parameters to the specific use case."
+            },
+            "functionSelector": "5f67b806",
+            "id": 672,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "addToWhitelist",
+            "nameLocation": "1298:14:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 670,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 665,
+                  "mutability": "mutable",
+                  "name": "whitelisted",
+                  "nameLocation": "1341:11:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 672,
+                  "src": "1322:30:9",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 663,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1322:7:9",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 664,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1322:9:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 667,
+                  "mutability": "mutable",
+                  "name": "numAllowed",
+                  "nameLocation": "1371:10:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 672,
+                  "src": "1363:18:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 666,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1363:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                },
+                {
+                  "constant": false,
+                  "id": 669,
+                  "mutability": "mutable",
+                  "name": "mintPrice",
+                  "nameLocation": "1396:9:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 672,
+                  "src": "1388:17:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  },
+                  "typeName": {
+                    "id": 668,
+                    "name": "uint256",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1388:7:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_uint256",
+                      "typeString": "uint256"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1312:99:9"
+            },
+            "returnParameters": {
+              "id": 671,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1420:0:9"
+            },
+            "scope": 688,
+            "src": "1289:132:9",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 673,
+              "nodeType": "StructuredDocumentation",
+              "src": "1428:225:9",
+              "text": " @notice Removes an array of addresses from the whitelist\n @dev Throws if:\n - Any address of 'removed' is not whitelisted\n @param removed The array of addresses to remove from the whitelist"
+            },
+            "functionSelector": "548db174",
+            "id": 679,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "removeFromWhitelist",
+            "nameLocation": "1667:19:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 677,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 676,
+                  "mutability": "mutable",
+                  "name": "removed",
+                  "nameLocation": "1706:7:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 679,
+                  "src": "1687:26:9",
+                  "stateVariable": false,
+                  "storageLocation": "calldata",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_array$_t_address_$dyn_calldata_ptr",
+                    "typeString": "address[]"
+                  },
+                  "typeName": {
+                    "baseType": {
+                      "id": 674,
+                      "name": "address",
+                      "nodeType": "ElementaryTypeName",
+                      "src": "1687:7:9",
+                      "stateMutability": "nonpayable",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "id": 675,
+                    "nodeType": "ArrayTypeName",
+                    "src": "1687:9:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_array$_t_address_$dyn_storage_ptr",
+                      "typeString": "address[]"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1686:28:9"
+            },
+            "returnParameters": {
+              "id": 678,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "1723:0:9"
+            },
+            "scope": 688,
+            "src": "1658:66:9",
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "external"
+          },
+          {
+            "documentation": {
+              "id": 680,
+              "nodeType": "StructuredDocumentation",
+              "src": "1731:200:9",
+              "text": " @notice Returns whether an 'account' is whitelisted or not\n @param account The queried address\n @return bool 'true' if 'account' is whitelisted,\n 'false' otherwise"
+            },
+            "functionSelector": "3af32abf",
+            "id": 687,
+            "implemented": false,
+            "kind": "function",
+            "modifiers": [],
+            "name": "isWhitelisted",
+            "nameLocation": "1945:13:9",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 683,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 682,
+                  "mutability": "mutable",
+                  "name": "account",
+                  "nameLocation": "1967:7:9",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 687,
+                  "src": "1959:15:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 681,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1959:7:9",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1958:17:9"
+            },
+            "returnParameters": {
+              "id": 686,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 685,
+                  "mutability": "mutable",
+                  "name": "",
+                  "nameLocation": "-1:-1:-1",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 687,
+                  "src": "1998:4:9",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_bool",
+                    "typeString": "bool"
+                  },
+                  "typeName": {
+                    "id": 684,
+                    "name": "bool",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "1998:4:9",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_bool",
+                      "typeString": "bool"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "1997:6:9"
+            },
+            "scope": 688,
+            "src": "1936:68:9",
+            "stateMutability": "view",
+            "virtual": false,
+            "visibility": "external"
+          }
+        ],
+        "scope": 689,
+        "src": "583:1425:9",
+        "usedErrors": []
+      }
+    ],
+    "src": "75:1933:9"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.8.17+commit.8df45f5f.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.4.11",
+  "updatedAt": "2023-01-11T09:26:54.288Z",
+  "devdoc": {
+    "details": "Interface to manage a whitelist of addresses Contracts implementing { IWhitelist } interface can add and remove addresses from a whitelist. Members of a whitelist can have benefits and privileges, as access to presales, discounts, etc. -------- WARNING! -------- Ensure that adding members to the whitelist is restricted from public  external calls that might facilitate DoS attacks. Administrator roles or similar are highly advised.",
+    "kind": "dev",
+    "methods": {
+      "addToWhitelist(address[],uint256,uint256)": {
+        "details": "Throws if: - Any address of 'whitelisted' is the zero address",
+        "params": {
+          "mintPrice": "The price at which the whitelisted address can mint the tokens. NOTE that 'numAllowed' and 'mintPrice' are optional parameters. A  whitelist might pursue different purposes. Use this funcion by adapting its parameters to the specific use case.",
+          "numAllowed": "The number of tokens allowed to mint",
+          "whitelisted": "The array of addresses added to the whitelist"
+        }
+      },
+      "isWhitelisted(address)": {
+        "params": {
+          "account": "The queried address"
+        },
+        "returns": {
+          "_0": "bool 'true' if 'account' is whitelisted, 'false' otherwise"
+        }
+      },
+      "removeFromWhitelist(address[])": {
+        "details": "Throws if: - Any address of 'removed' is not whitelisted",
+        "params": {
+          "removed": "The array of addresses to remove from the whitelist"
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "addToWhitelist(address[],uint256,uint256)": {
+        "notice": "Adds an array of 'whitelisted' addresses to the whitelist. Assigns 'numAllowed' number of tokens to mint at a 'mintPrice'"
+      },
+      "isWhitelisted(address)": {
+        "notice": "Returns whether an 'account' is whitelisted or not"
+      },
+      "removeFromWhitelist(address[])": {
+        "notice": "Removes an array of addresses from the whitelist"
+      }
+    },
+    "version": 1
+  }
+}
